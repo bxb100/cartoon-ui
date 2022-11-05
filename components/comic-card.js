@@ -16,10 +16,6 @@ export default function ComicCard({comic}) {
 	const [update, setUpdate] = useState(false)
 	const [comicObj, setComicObj] = useState(comic)
 
-	useEffect(() => {
-		console.log(comicObj)
-	}, [comicObj])
-
 	return (
 		<div className="bg-white overflow-hidden shadow rounded-lg divide-y divide-dashed divide-gray-200 mt-10">
 			<div className="px-4 py-5 sm:p-6">

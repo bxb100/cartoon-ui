@@ -84,7 +84,7 @@ function Input({name, setRef, placeholder}) {
 				type="text"
 				name={name}
 				id={name}
-				className="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm"
+				className="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 font-sans text-sm focus:ring-0 sm:text-sm"
 				placeholder={placeholder}
 			/>
 		</div>
