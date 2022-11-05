@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
 
-	const response = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/comic`, {
+	const response = await fetch(`${process.env.API_HOST}/api/comic`, {
 		headers: {
 			"Content-Type": "application/json"
 		},
