@@ -1,6 +1,5 @@
 import Link from "next/link";
-import {ReferLink} from "./icon";
-import {FolderIcon, PencilSquareIcon} from "@heroicons/react/20/solid";
+import {ArrowTopRightOnSquareIcon, FolderIcon, PencilSquareIcon} from "@heroicons/react/20/solid";
 import {useState} from "react";
 import fetcher from "../lib/fetcher";
 import toast from "react-hot-toast";
@@ -33,7 +32,7 @@ export default function ComicCard({comic, callRefresh}) {
 							: <Link href={`/comics/${comic.id}?name=${comic.title}`}
 									className="text-xl text-left font-semibold flex items-center">
 								{comic.title}
-								<ReferLink/>
+								<ArrowTopRightOnSquareIcon className={"w-6 h-6 ml-2"}></ArrowTopRightOnSquareIcon>
 							</Link>
 					}
 

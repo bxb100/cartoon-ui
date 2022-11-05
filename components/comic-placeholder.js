@@ -1,4 +1,3 @@
-import {ReferLink} from "./icon";
 import LoadingDots from "./loading-dots";
 
 export default function ComicPlaceholder() {

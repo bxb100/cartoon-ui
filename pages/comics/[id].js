@@ -8,7 +8,6 @@ import fetcher from "../../lib/fetcher";
 import useSWR from "swr";
 import {Dialog, Transition} from '@headlessui/react'
 import {Fragment, useState} from 'react'
-import {ReferLink} from "../../components/icon";
 import toast from "react-hot-toast";
 
 export default function Comic() {
