@@ -9,6 +9,7 @@ import useSWR from "swr";
 import {Dialog, Transition} from '@headlessui/react'
 import {Fragment, useState} from 'react'
 import toast from "react-hot-toast";
+import ComicScan from "../../components/comic-scan";
 
 export default function Comic() {
 	const router = useRouter();
@@ -18,7 +19,6 @@ export default function Comic() {
 		`/api/get-volumes?id=${id}`,
 		fetcher
 	)
-	const [scan, setScan] = useState(false)
 
 	return (
 		<Layout>
@@ -39,35 +39,7 @@ export default function Comic() {
 						</button>
 					</Link>
 
-					{scan ? <button type="button"
-									className={`h-9 inline-flex items-center px-3 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 cursor-not-allowed`}
-									disabled="">
-							<svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-								 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-								<circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
-										strokeWidth="4"></circle>
-								<path className="opacity-75" fill="currentColor"
-									  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-							</svg>
-							Scanning...
-						</button>
-						:
-						<button
-							onClick={async () => {
-								setScan(true)
-								try {
-									await fetcher(`/api/scan-comic?id=${id}`)
-									toast.success("Scan successful")
-								} finally {
-									setScan(false)
-									await revalidateVolumes()
-								}
-							}}
-							className="h-9 inline-flex items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-						>
-							{'Scan'}
-						</button>
-					}
+					<ComicScan id={id} revalidate={revalidateVolumes} />
 				</div>
 				<div className="mt-8 flex flex-col">
 					<div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -142,10 +114,16 @@ function VolumeRow({volume, refresh}) {
 					className="text-gray-900">{volume.currentPage} / {volume.pageCount}</div>
 			</td>
 			<td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-												<span className={`inline-flex rounded-full px-2 text-xs font-semibold leading-5
+				{ volume.currentPage === volume.pageCount ?
+					<span className={`inline-flex rounded-full px-2 text-xs font-semibold leading-5 bg-violet-600 text-white`}>
+													Done
+												</span>
+					:
+					<span className={`inline-flex rounded-full px-2 text-xs font-semibold leading-5
 												 	${volume.read ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800 '}`}>
 													{volume.read ? 'Reading' : "Seal"}
 												</span>
+				}
 			</td>
 			<td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
 				<DeleteToast id={volume.id} refresh={refresh}></DeleteToast>
@@ -210,6 +188,13 @@ function DeleteToast({id, refresh}) {
 									<div className="mt-4 flex flex-row space-x-4">
 										<button
 											type="button"
+											className="justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+											onClick={closeModal}
+										>
+											Close
+										</button>
+										<button
+											type="button"
 											className="justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-700 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
 											onClick={async () => {
 												try {
@@ -221,13 +206,6 @@ function DeleteToast({id, refresh}) {
 											}}
 										>
 											Delete
-										</button>
-										<button
-											type="button"
-											className="justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-											onClick={closeModal}
-										>
-											Dismiss
 										</button>
 									</div>
 								</Dialog.Panel>
