@@ -1,7 +1,7 @@
 This project is [Simple Cartoon](https://github.com/bxb100/simple-cartoon)'s UI part
 
 ## Home
-![img.png](doc/img.png)
+![img.png](doc/SCR-20221105-u3m.png)
 
 ## Volume
 ![img2.png](doc/img2.png)
