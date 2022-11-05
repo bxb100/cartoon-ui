@@ -14,12 +14,7 @@ export default function Layout({children}) {
 				/>
 			</Head>
 
-			<Toaster
-				position="bottom-right"
-				toastOptions={{
-					duration: 10000,
-				}}
-			/>
+			<Toaster position="top-center"/>
 
 			<main className="flex flex-col items-center justify-center w-full flex-1 sm:px-20 text-center my-20">
 				{children}

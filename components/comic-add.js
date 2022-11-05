@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import LoadingDots from "./loading-dots";
-import toast from "react-hot-toast";
+import toast, {Toaster} from "react-hot-toast";
 
 export default function ComicAdd({callRefresh}) {
 
@@ -32,14 +32,13 @@ export default function ComicAdd({callRefresh}) {
 				.then(async res => {
 					if (!res.ok) {
 						toast.error((await res.json()).msg)
-					} else {
-						await callRefresh()
 					}
 				})
 
 		} finally {
 			setAdding(false)
 			setDisabled(false)
+			await callRefresh()
 		}
 	}
 

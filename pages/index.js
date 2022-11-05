@@ -22,7 +22,7 @@ export default function Home() {
 				{
 					comics
 						? comics.map(c => {
-							return <ComicCard key={c.id} comic={c}/>
+							return <ComicCard callRefresh={revalidateComics} key={c.id} comic={c}/>
 						})
 						:
 						[1, 2, 3].map((_, i) => <ComicPlaceholder key={i}/>)
