@@ -29,11 +29,10 @@ export default function Comic() {
 			<div className="px-4 sm:px-6 lg:px-8 text-left">
 				<div className={"flex space-x-4"}>
 
-
 					<Link href={"/"} className={"mt-4 sm:mt-0 sm:flex-none"}>
 						<button
 							type="button"
-							className="inline-flex items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+							className="h-9 inline-flex items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 						>
 							<HomeIcon className="-ml-0.5 mr-2 h-4 w-4" aria-hidden="true"/>
 							Home
@@ -41,7 +40,7 @@ export default function Comic() {
 					</Link>
 
 					{scan ? <button type="button"
-									className={`inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 cursor-not-allowed`}
+									className={`h-9 inline-flex items-center px-3 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 cursor-not-allowed`}
 									disabled="">
 							<svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
 								 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -64,7 +63,7 @@ export default function Comic() {
 									await revalidateVolumes()
 								}
 							}}
-							className="inline-flex items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+							className="h-9 inline-flex items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 						>
 							{'Scan'}
 						</button>

@@ -1,3 +1,5 @@
 .next
 node_modules
 doc
+# https://nextjs.org/docs/basic-features/environment-variables
+.env.development
