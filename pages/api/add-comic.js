@@ -11,11 +11,10 @@ export default async function handler(req, res) {
 			method: "POST",
 		}
 	)
-	console.log(await response.text())
 	if (response.ok) {
 		const data = await response.json();
-		res.status(200).json(data)
+		res.status(response.status).json(data)
 	} else {
-		res.status(403).json({msg: "Add Failed"})
+		res.status(response.status).json({msg: "Add Failed"})
 	}
 }

@@ -10,7 +10,7 @@ export default function ComicScan({id, revalidate}) {
 		<>
 		{
 			scan ? <button type="button"
-						   className={`h-9 inline-flex items-center px-3 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 cursor-not-allowed`}
+						   className={`inline-flex btn-primary px-3 transition ease-in-out duration-150 cursor-not-allowed`}
 						   disabled="">
 					<svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
 						 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -35,7 +35,7 @@ export default function ComicScan({id, revalidate}) {
 							await revalidate()
 						}
 					}}
-					className="h-9 inline-flex items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+					className="btn-primary"
 				>
 					{'Scan'}
 				</button>

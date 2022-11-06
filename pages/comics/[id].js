@@ -26,13 +26,13 @@ export default function Comic() {
 				<title>{name || 'Comic'}</title>
 			</Head>
 
-			<div className="px-4 sm:px-6 lg:px-8 text-left">
+			<div className="px-4 sm:px-6 lg:px-8 text-left w-full md:w-1/2 min-w-fit">
 				<div className={"flex space-x-4"}>
 
-					<Link href={"/"} className={"mt-4 sm:mt-0 sm:flex-none"}>
+					<Link href={"/"} className={"sm:mt-0 sm:flex-none"}>
 						<button
 							type="button"
-							className="h-9 inline-flex items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+							className="btn-primary inline-flex"
 						>
 							<HomeIcon className="-ml-0.5 mr-2 h-4 w-4" aria-hidden="true"/>
 							Home
@@ -105,7 +105,7 @@ function VolumeRow({volume, refresh}) {
 							</Link>
 						</div>
 						<div
-							className="text-gray-500 truncate max-w-md select-all ">{volume.path}</div>
+							className="text-gray-500 truncate xl:max-w-max max-w-md select-all ">{volume.path}</div>
 					</div>
 				</div>
 			</td>

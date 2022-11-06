@@ -5,6 +5,5 @@ export default async function handler(req, res) {
 		method: "DELETE"
 	})
 
-	const json = await response.json();
-	res.status(response.status).send(json)
+	res.status(response.status).end()
 }

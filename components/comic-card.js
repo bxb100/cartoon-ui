@@ -29,38 +29,52 @@ export default function ComicCard({comic, callRefresh}) {
 							? <Input placeholder={comic.title} handler={
 								e => setComicObj({...comicObj, title: e.target.value})
 							}/>
-							: <Link href={`/comics/${comic.id}?name=${comic.title}`}
-									className="text-xl text-left font-semibold flex items-center">
-								{comic.title}
-								<ArrowTopRightOnSquareIcon className={"w-6 h-6 ml-2"}></ArrowTopRightOnSquareIcon>
-							</Link>
+							:
+							<div className={"h-11 w-1/2"}>
+								<Link href={`/comics/${comic.id}?name=${comic.title}`}
+									  className="text-xl text-left font-semibold flex items-center w-full ">
+									<span className={"truncate overflow-hidden"}>{comic.title}</span>
+									<ArrowTopRightOnSquareIcon className={"w-6 h-6 ml-2 min-w-fit"}></ArrowTopRightOnSquareIcon>
+								</Link>
+
+								<span className={"mt-1 text-sm text-gray-400 float-left "}>
+									{comic.volNum ? `vol. ${comic.volNum}`: 'vol. ??'}
+								</span>
+							</div>
 					}
 
-
 					<div className="flex space-x-3">
-						<button
-							onClick={async () => {
-								await fetch(`/api/update-comic?id=${comic.id}&title=${comicObj.title}&path=${comicObj.path}`)
-								setUpdate(false)
-								await callRefresh()
-							}}
-							hidden={!update}
-							className={` text-white bg-indigo-600 py-1.5 w-24 text-sm border-solid border rounded-md focus:outline-none transition-all ease-in-out duration-150`}
-						>
-							{'Update'}
-						</button>
 
-						<ComicScan id={comic.id} revalidate={()=> {}}/>
-						<button
-							hidden={update}
-							onClick={async () => {
-								await fetch(`/api/delete-comic?id=${comic.id}`)
-								await callRefresh();
-							}}
-							className={`bg-red-500 text-white border-red-500 hover:text-red-500 hover:bg-white py-1.5 w-24 text-sm border-solid border rounded-md focus:outline-none transition-all ease-in-out duration-150`}
-						>
-							{'Remove'}
-						</button>
+						{
+							update
+								? <button
+									onClick={async () => {
+										await fetch(`/api/update-comic?id=${comic.id}&title=${comicObj.title}&path=${comicObj.path}`)
+										setUpdate(false)
+										await callRefresh()
+									}}
+									hidden={!update}
+									className={` btn-primary text-sm transition-all ease-in-out duration-150`}
+								>
+									{'Update'}
+								</button>
+								: <>
+									<ComicScan id={comic.id} revalidate={() => {
+									}}/>
+									<button
+										hidden={update}
+										onClick={async () => {
+											await fetch(`/api/delete-comic?id=${comic.id}`)
+											await callRefresh();
+										}}
+										className={`btn-primary bg-red-500  border-red-500 hover:bg-red-700 border-solid border `}
+									>
+										{'Remove'}
+									</button>
+								</>
+						}
+
+
 					</div>
 				</div>
 			</div>

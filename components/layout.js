@@ -4,7 +4,7 @@ import {Toaster} from "react-hot-toast";
 export default function Layout({children}) {
 
 	return (
-		<div className=" item-center justify-center min-h-screen py-2">
+		<div className=" item-center justify-center min-h-screen py-2 bg-gray-100">
 			<Head>
 				<title>Cartoon</title>
 				<link rel="icon" href="/favicon.ico"/>
@@ -16,7 +16,7 @@ export default function Layout({children}) {
 
 			<Toaster position="top-center"/>
 
-			<main className="flex flex-col items-center justify-center w-full flex-1 sm:px-20 text-center my-20">
+			<main className="flex flex-col items-center justify-center w-full flex-1 md:px-20 text-center my-20">
 				{children}
 			</main>
 		</div>

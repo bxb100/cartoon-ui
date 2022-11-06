@@ -17,7 +17,7 @@ export default function Home() {
 		<Layout>
 			<h1 className="text-4xl sm:text-6xl font-bold">Cartoon</h1>
 			<div className="w-full max-w-2xl">
-				<ComicAdd callRefresh={revalidateComics}/>
+				<ComicAdd validate={revalidateComics}/>
 
 				{
 					comics
