@@ -4,19 +4,19 @@ import toast, {Toaster} from "react-hot-toast";
 
 export default function ComicAdd({validate}) {
 
-	const [title, setTitle] = useState('');
+	const [caption, setCaption] = useState('');
 	const [path, setPath] = useState('');
 
 	const [disabled, setDisabled] = useState(true)
 	const [adding, setAdding] = useState(false)
 
 	useEffect(() => {
-		if (title.length === 0 || path.length === 0) {
+		if (caption.length === 0 || path.length === 0) {
 			setDisabled(true)
 		} else {
 			setDisabled(false)
 		}
-	}, [title, path])
+	}, [caption, path])
 
 	useEffect(() => {
 		if (adding) {
@@ -28,7 +28,7 @@ export default function ComicAdd({validate}) {
 		e.preventDefault()
 		setAdding(true)
 		try {
-			const res = await fetch(`/api/add-comic?title=${title}&path=${path}`)
+			const res = await fetch(`/api/add-comic?caption=${caption}&path=${path}`)
 			if (!res.ok) {
 				toast.error((await res.json()).msg)
 			}
@@ -45,7 +45,7 @@ export default function ComicAdd({validate}) {
 				onSubmit={handleSubmit}
 				className="flex justify-between space-x-4 px-5 w-full max-w-2xl h-10 mt-10"
 			>
-				<Input name={"title"} setRef={setTitle} placeholder={"Comic Title"}></Input>
+				<Input name={"caption"} setRef={setCaption} placeholder={"Comic caption"}></Input>
 				<Input name={"path"} setRef={setPath} placeholder={"Comic Path"}></Input>
 
 				<button

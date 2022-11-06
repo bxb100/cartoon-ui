@@ -1,8 +1,8 @@
 export default async function handler(req, res) {
 
-	const {id, title, path} = req.query
+	const {id, caption, path} = req.query
 	const response = await fetch(`${process.env.API_HOST}/api/comic/${id}`, {
-		body: JSON.stringify({title, path}),
+		body: JSON.stringify({caption, path}),
 		headers: {
 			"Content-Type": "application/json"
 		},
