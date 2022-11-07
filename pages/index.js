@@ -3,7 +3,6 @@ import Layout from "../components/layout";
 import ComicAdd from "../components/comic-add";
 import useSWR from "swr";
 import fetcher from "../lib/fetcher";
-import {useEffect} from "react";
 import ComicPlaceholder from "../components/comic-placeholder";
 
 export default function Home() {

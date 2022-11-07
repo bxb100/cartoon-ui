@@ -2,8 +2,8 @@ import {useRouter} from "next/router";
 import {ArrowSmallLeftIcon} from "@heroicons/react/20/solid";
 import Head from "next/head";
 import LoadingDots from "../../components/loading-dots";
-import Link from "next/link";
 import {useEffect, useState} from "react";
+import toast, {Toaster} from "react-hot-toast";
 
 export default function Reader() {
 
@@ -32,8 +32,11 @@ export default function Reader() {
 		const timer = setTimeout(() => {
 			if (load) {
 				setLoad(false)
+				toast('Slow Loading', {
+					icon: '🐢'
+				});
 			}
-		}, 18000)
+		}, 30000)
 		return () => clearTimeout(timer)
 	}, [load])
 
@@ -42,6 +45,8 @@ export default function Reader() {
 			<Head>
 				<title>Reader</title>
 			</Head>
+
+			<Toaster></Toaster>
 
 			<a onClick={() => router.back()}
 			   className={"z-50 absolute inline-flex cursor-pointer items-center px-3 py-2 cursor-point text-lg leading-4 font-medium text-black opacity-5 hover:opacity-100"}>
