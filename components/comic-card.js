@@ -32,10 +32,11 @@ export default function ComicCard({comic, revalidate}) {
 							:
 							<div className={"h-11 w-1/2"}>
 								<Link href={`/comics/${comic.id}?name=${comic.caption}`}
-									  className="text-xl text-left font-semibold flex items-center w-full ">
-									<span className={"truncate overflow-hidden"}>{comic.caption}</span>
+									  className="text-xl text-left font-semibold flex items-center w-full">
+									<span className={"truncate"}>{comic.caption}</span>
+									{/* TODO : not set min-w-fit because the safari will full width*/}
 									<ArrowTopRightOnSquareIcon
-										className={"w-6 h-6 ml-2 min-w-fit"}></ArrowTopRightOnSquareIcon>
+										className={"w-6 h-6 ml-2"}></ArrowTopRightOnSquareIcon>
 								</Link>
 
 								<span className={"mt-1 text-sm text-gray-400 float-left "}>
