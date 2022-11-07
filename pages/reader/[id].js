@@ -15,13 +15,13 @@ export default function Reader() {
 	const [load, setLoad] = useState(true)
 
 	useEffect(() => {
-		const handleEvent = ({message, data, origin}) => {
+		const handleEvent = ({ data, origin}) => {
 			if (origin === process.env.NEXT_PUBLIC_API_HOST) {
-				console.log(message, data)
 				if (data === 'done') {
 					setLoad(false)
 				}
 			}
+			return true
 		}
 		window.addEventListener("message", handleEvent, false)
 		return () => window.removeEventListener("message", handleEvent)
@@ -33,7 +33,7 @@ export default function Reader() {
 			if (load) {
 				setLoad(false)
 			}
-		}, 8000)
+		}, 18000)
 		return () => clearTimeout(timer)
 	}, [load])
 
